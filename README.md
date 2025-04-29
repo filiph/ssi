@@ -18,6 +18,20 @@ If you need a templating language that supports rendering collections
 and structured data, this tool is not for you.
 
 
+## Installation
+
+This package is currently not on pub.dev.
+
+Clone the repo, `cd` into its root directory,
+and run:
+
+```shell
+dart pub global activate --source path .
+```
+
+This will add `ssi` to your path.
+
+
 ## Usage
 
 The simplest usage is:
