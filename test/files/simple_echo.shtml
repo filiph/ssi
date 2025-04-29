@@ -1,0 +1,2 @@
+<!--#set var="title" value="My Website" -->
+<title><!--#echo var="title" --></title>

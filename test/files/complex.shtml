@@ -1,0 +1,5 @@
+<!--#include file="variables_set.txt" -->
+
+<!--#include file="index.shtml" -->
+
+<!--#include file="variables_echo.md" markdown="true" -->
