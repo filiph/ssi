@@ -25,9 +25,21 @@ Future<int> main(List<String> arguments) async {
           'root-markdown',
           defaultsTo: true,
           help:
-              'When one of the provided paths has a Markdown extension '
+              'When one of the files provided on the command line '
+              'has a Markdown extension '
               '(${_markdownExtensions.join(', ')}), '
               "automatically assume it's Markdown and convert it.",
+        )
+        ..addFlag(
+          'auto-markdown',
+          defaultsTo: false,
+          help:
+              'When an file included with the #include directive '
+              'has a Markdown extension '
+              '(${_markdownExtensions.join(', ')}), '
+              "automatically assume it's Markdown and convert it. "
+              "This is off by default because we can't assume you're trying "
+              "to build an HTML file.",
         )
         ..addFlag('version', negatable: false, help: 'Print the tool version.');
 
