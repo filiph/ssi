@@ -1,6 +1,6 @@
 name: ssi
 description: A tiny implementation of Server Side Includes.
-version: 0.1.1  # When changing this, also change lib/version.dart.
+version: 0.1.2  # When changing this, also change lib/version.dart.
 repository: https://github.com/filiph/ssi
 
 environment:

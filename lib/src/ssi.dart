@@ -11,9 +11,14 @@ class ServerSideIncludeProcessor {
 
   final bool verbose;
 
+  final bool autoMarkdown;
+
   late final Variables variables = Variables(this);
 
-  ServerSideIncludeProcessor({required this.verbose});
+  ServerSideIncludeProcessor({
+    required this.verbose,
+    required this.autoMarkdown,
+  });
 
   Iterable<String> recursiveExpand(
     String filePath,

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:path/path.dart' as path;
 import 'package:ssi/src/directive.dart';
+import 'package:ssi/src/markdown_filenames.dart';
 import 'package:ssi/src/ssi.dart';
 import 'package:ssi/version.dart';
 
@@ -27,7 +27,7 @@ Future<int> main(List<String> arguments) async {
           help:
               'When one of the files provided on the command line '
               'has a Markdown extension '
-              '(${_markdownExtensions.join(', ')}), '
+              '(${markdownExtensions.join(', ')}), '
               "automatically assume it's Markdown and convert it.",
         )
         ..addFlag(
@@ -36,7 +36,7 @@ Future<int> main(List<String> arguments) async {
           help:
               'When an file included with the #include directive '
               'has a Markdown extension '
-              '(${_markdownExtensions.join(', ')}), '
+              '(${markdownExtensions.join(', ')}), '
               "automatically assume it's Markdown and convert it. "
               "This is off by default because we can't assume you're trying "
               "to build an HTML file.",
@@ -45,6 +45,7 @@ Future<int> main(List<String> arguments) async {
 
   final bool verbose;
   final bool rootMarkdown;
+  final bool autoMarkdown;
   final List<String> templatePaths;
 
   try {
@@ -61,6 +62,7 @@ Future<int> main(List<String> arguments) async {
     }
     verbose = results.flag('verbose');
     rootMarkdown = results.flag('root-markdown');
+    autoMarkdown = results.flag('auto-markdown');
 
     if (results.rest.isEmpty) {
       print('You must provide at least one template file.');
@@ -80,11 +82,14 @@ Future<int> main(List<String> arguments) async {
     return 2;
   }
 
-  final ssi = ServerSideIncludeProcessor(verbose: verbose);
+  final ssi = ServerSideIncludeProcessor(
+    verbose: verbose,
+    autoMarkdown: autoMarkdown,
+  );
 
   try {
     for (final templatePath in templatePaths) {
-      final convertMarkdown = rootMarkdown && _isMarkdownPath(templatePath);
+      final convertMarkdown = rootMarkdown && isMarkdownPath(templatePath);
       if (verbose && convertMarkdown) {
         print('[VERBOSE] Detected root markdown file: $templatePath');
       }
@@ -113,17 +118,3 @@ void _printUsage(ArgParser argParser) {
   print('Usage: ssi <flags> template.file [another.file [...]]');
   print(argParser.usage);
 }
-
-bool _isMarkdownPath(String filePath) {
-  final extension = path.extension(filePath);
-  return _markdownExtensions.contains(extension);
-}
-
-List<String> _markdownExtensions = [
-  '.markdown',
-  '.md',
-  '.mdown',
-  '.mdwn',
-  '.mkd',
-  '.mkdn',
-];

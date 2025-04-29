@@ -1,11 +1,10 @@
 import 'package:path/path.dart' as path;
 import 'package:ssi/src/directive.dart';
+import 'package:ssi/src/markdown_filenames.dart';
 import 'package:ssi/src/ssi.dart';
 
 class Include extends Directive {
   Include(Map<String, String> parameters) : super('include', parameters);
-
-  bool get shouldConvertMarkdown => parameters['markdown'] == 'true';
 
   @override
   Iterable<String> eval(
@@ -26,6 +25,11 @@ class Include extends Directive {
     }
 
     final filePath = path.join(directoryPath, filename);
+
+    final forceMarkdown = parameters['markdown'] == 'true';
+
+    final shouldConvertMarkdown =
+        forceMarkdown || (ssi.autoMarkdown && isMarkdownPath(filePath));
 
     var outputLines = ssi.recursiveExpand(
       filePath,

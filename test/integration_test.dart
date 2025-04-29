@@ -6,7 +6,7 @@ void main() {
   late ServerSideIncludeProcessor ssi;
 
   setUp(() {
-    ssi = ServerSideIncludeProcessor(verbose: false);
+    ssi = ServerSideIncludeProcessor(verbose: false, autoMarkdown: false);
   });
 
   test('single file with includes (index.shtml)', () async {
