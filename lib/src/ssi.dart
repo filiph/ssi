@@ -42,7 +42,7 @@ class ServerSideIncludeProcessor {
     final markdownBuf = convertMarkdown ? StringBuffer() : null;
 
     for (final line in lines) {
-      final outputLine = line.replaceAllMapped(Directive.regExp, (match) {
+      final outputString = line.replaceAllMapped(Directive.regExp, (match) {
         final directive = Directive.fromMatch(match);
         final outputLines = directive.eval(this, recursionLevel, directoryPath);
         if (outputLines.isEmpty) {
@@ -52,9 +52,9 @@ class ServerSideIncludeProcessor {
       });
 
       if (convertMarkdown) {
-        markdownBuf!.writeln(outputLine);
+        markdownBuf!.writeln(outputString);
       } else {
-        yield outputLine;
+        yield* outputString.split('\n');
       }
     }
 
