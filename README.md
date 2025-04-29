@@ -22,11 +22,8 @@ and structured data, this tool is not for you.
 
 This package is currently not on pub.dev.
 
-Clone the repo, `cd` into its root directory,
-and run:
-
 ```shell
-dart pub global activate --source path .
+dart pub global activate --source git https://github.com/filiph/ssi --git-ref main
 ```
 
 This will add `ssi` to your path.
