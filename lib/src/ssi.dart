@@ -5,21 +5,28 @@ import 'package:path/path.dart' as path;
 import 'package:ssi/src/directive.dart';
 import 'package:ssi/src/variables.dart';
 
+/// A processor that expands server-side includes.
 class ServerSideIncludeProcessor {
   /// The maximum number of recursions.
   static const _maxRecursionLevel = 10000;
 
+  /// Sets whether or not the output should include verbose logging.
+  /// Useful for debugging.
   final bool verbose;
 
+  /// Sets whether or not to automatically convert markdown files to HTML.
   final bool autoMarkdown;
 
+  /// The variables to use when processing the file.
   late final Variables variables = Variables(this);
 
+  /// Creates a new instance of [ServerSideIncludeProcessor].
   ServerSideIncludeProcessor({
     required this.verbose,
     required this.autoMarkdown,
   });
 
+  /// Expands the given file path. Returns the expanded content as lines.
   Iterable<String> recursiveExpand(
     String filePath,
     int recursionLevel, {

@@ -1,5 +1,6 @@
 import 'package:ssi/src/ssi.dart';
 
+/// A simple class that holds variables.
 class Variables {
   // ignore: unused_field
   final ServerSideIncludeProcessor _ssi;
@@ -8,8 +9,13 @@ class Variables {
 
   Variables(this._ssi);
 
+  /// Sets variable [name] to [value].
   void set(String name, String value) => _variables[name] = value;
 
+  /// Gets the current value of variable [name].
+  ///
+  /// Throws [ArgumentError] if the variable hasn't been set
+  /// (fail-fast principle).
   String get(String name) {
     if (!_variables.containsKey(name)) {
       throw ArgumentError(
