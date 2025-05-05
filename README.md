@@ -13,11 +13,27 @@ Why SSI and not some other syntax?
 * The syntax of SSI directives is very obvious (unlike, say, `m4`)
   and hard to miss: `<!--#include file="..." -->`
 * Unlike more complex technologies like `mustache` or `jekyll` or `php`,
-  SSI doesn't let you do things that could get you in trouble, 
+  SSI doesn't let you do complex things, 
   such as evaluating expressions or running shell commands.
+  This is a hammer, not a power drill. Sometimes, all you need is a hammer.
 
 If you need a templating language that supports rendering collections
 and structured data, this tool is not for you.
+
+
+## Security
+
+Please **do not** run this as part of a live server.
+
+> This project is intended as a low-level *static site generator*,
+> not a dynamic server language.
+
+Although this project doesn't let you evaluate expressions, for example,
+it does provide unchecked ways to access files on the filesystem.
+This is safe when you're running `ssi` yourself at build time,
+but it could spell disaster if SSI directives are evaluated dynamically
+on the server. For example, imagine if a hacker was able to inject
+a directive such as `<!--#include file="/etc/passwd" -->`.
 
 
 ## Installation
