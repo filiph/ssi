@@ -15,7 +15,8 @@ Why SSI and not some other syntax?
 * Unlike more complex technologies like `mustache` or `jekyll` or `php`,
   SSI doesn't let you do complex things, 
   such as evaluating expressions or running shell commands.
-  This is a hammer, not a power drill. Sometimes, all you need is a hammer.
+  This tool is a hammer, not a power drill.
+  Sometimes, all you need is a hammer.
 
 If you need a templating language that supports rendering collections
 and structured data, this tool is not for you.
