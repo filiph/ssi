@@ -2,3 +2,5 @@
 # Created by `dart pub`
 .dart_tool/
 .idea/
+
+bin/*.exe
