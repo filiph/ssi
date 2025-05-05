@@ -1,5 +1,5 @@
 import 'package:path/path.dart' as path;
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
 void main() {

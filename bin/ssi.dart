@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:ssi/src/directive.dart';
-import 'package:ssi/src/markdown_filenames.dart';
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/markdown_filenames.dart';
+import 'package:ssi/ssi.dart';
 import 'package:ssi/version.dart';
 
 Future<int> main(List<String> arguments) async {
@@ -101,7 +100,7 @@ Future<int> main(List<String> arguments) async {
       );
 
       for (final line in lines) {
-        if (line == Directive.magicNoOutputSequence) continue;
+        if (line == ServerSideIncludeProcessor.magicNoOutputSequence) continue;
         print(line);
       }
     }

@@ -1,7 +1,7 @@
 import 'package:ssi/src/directives/echo.dart';
 import 'package:ssi/src/directives/include.dart';
 import 'package:ssi/src/directives/set.dart';
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/ssi.dart';
 
 abstract class Directive {
   /// The regular expression that matches any directive.
@@ -11,21 +11,6 @@ abstract class Directive {
   static final RegExp regExp = RegExp(
     r'<!--#([a-z]+)\s+((?:[a-z]+="[^"]*"\s*)*)-->',
   );
-
-  /// A sequence of characters that signifies an empty line that should
-  /// not be in the output.
-  ///
-  /// This is for directives such as `<!--set ... -->`, which often
-  /// stand on an otherwise empty line which we don't want to have
-  /// in the output.
-  ///
-  /// This stands in contrast to an empty line that _should_ be in the output
-  /// (because it was in the input, without a directive).
-  ///
-  /// This is using a unicode (umbrella) character so that it's
-  /// almost impossible to have in the input by chance.
-  static String magicNoOutputSequence =
-      "\u2602SSI NO OUTPUT (IF YOU SEE THIS, THE ssi TOOL HAS A BUG)\u2602";
 
   /// The regular expression that matches a directive parameter (`key="value"`).
   static final RegExp _param = RegExp(r'([a-z]+)="([^"]*)"');

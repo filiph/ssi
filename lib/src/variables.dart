@@ -1,4 +1,4 @@
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/ssi.dart';
 
 /// A simple class that holds variables.
 class Variables {

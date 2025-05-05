@@ -1,5 +1,5 @@
 import 'package:ssi/src/directive.dart';
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/ssi.dart';
 
 class Set extends Directive {
   Set(Map<String, String> parameters) : super('set', parameters);

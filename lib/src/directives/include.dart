@@ -1,7 +1,7 @@
 import 'package:path/path.dart' as path;
+import 'package:ssi/markdown_filenames.dart';
 import 'package:ssi/src/directive.dart';
-import 'package:ssi/src/markdown_filenames.dart';
-import 'package:ssi/src/ssi.dart';
+import 'package:ssi/ssi.dart';
 
 class Include extends Directive {
   Include(Map<String, String> parameters) : super('include', parameters);
