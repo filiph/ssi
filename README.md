@@ -46,6 +46,21 @@ dart pub global activate --source git https://github.com/filiph/ssi --git-ref ma
 
 This will add `ssi` to your path.
 
+### Faster `ssi`
+
+To save on startup costs, you can compile the tool to binary:
+
+```shell
+dart compile exe bin/ssi.dart -o ssi
+```
+
+Then move the executable to where you store your binaries on your path.
+For example, on macOS, do this:
+
+```shell
+mv ssi /usr/local/bin
+```
+
 
 ## Usage
 
