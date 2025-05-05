@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 A tiny pre-processor that supports including files in other files.
 Think of it as "C macros for HTML and Markdown files".
 
