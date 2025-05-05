@@ -1,3 +1,9 @@
+## 0.1.4
+
+- Make the main library files usable outside the project 
+  (move them out of `lib/src`).
+- Add documentation.
+
 ## 0.1.3
 
 - Fix bug with magic no output.
